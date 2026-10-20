@@ -56,7 +56,7 @@ RULES = [
         "id": "no-long-words",
         "enabled": True,
         "type": "block_word_length_at_least",
-        "value": 8,
+        "value": 10,
         "message": "Blocked by governance: prompts may not contain words of 8 or more characters.",
     },
     {

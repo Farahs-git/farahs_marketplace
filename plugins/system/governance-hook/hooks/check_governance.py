@@ -4,7 +4,36 @@
 # if any rule is violated. Input arrives as JSON on stdin; output is JSON on
 # stdout. Any unexpected error returns {} (fail open).
 import json
+import os
 import sys
+
+# ---------------------------------------------------------------------------
+# DEBUG - set True while troubleshooting.
+#   * Appends a line to governance-hook.log (see _log) on every run.
+#   * Writes the same line to stderr.
+#   * Adds a note the agent can see, so you can ask it
+#     "did you receive a governance hook note?" to prove the hook fired.
+# ---------------------------------------------------------------------------
+DEBUG = True
+
+
+def _log(msg):
+    if not DEBUG:
+        return
+    line = "governance-hook: " + msg
+    try:
+        sys.stderr.write(line + "\n")
+    except Exception:
+        pass
+    # Try the saved folder first, then /tmp. Failures are ignored.
+    for base in (os.environ.get("AGENT_SAVED_ROOT", "/.agent/saved"), "/tmp"):
+        try:
+            with open(os.path.join(base, "governance-hook.log"), "a") as f:
+                f.write(line + "\n")
+            return
+        except Exception:
+            continue
+
 
 # ---------------------------------------------------------------------------
 # GOVERNANCE RULES - edit this list.
@@ -110,21 +139,31 @@ def evaluate(rule, prompt):
 
 
 def main():
-    hook_input = json.loads(sys.stdin.read() or "{}")
+    _log("started")
+    raw = sys.stdin.read()
+    hook_input = json.loads(raw or "{}")
+    _log("input keys=%s" % sorted(hook_input.keys()))
     prompt = get_prompt(hook_input)
+    _log("prompt found=%s length=%d" % (bool(prompt), len(prompt)))
     if not prompt:
-        return {}
+        if DEBUG:
+            _log("raw input (first 1500 chars): %s" % raw[:1500])
+        return {"clearable_note": "Governance hook ran (DEBUG): no user prompt found."} if DEBUG else {}
     for rule in RULES:
         try:
             violation = evaluate(rule, prompt)
-        except Exception:
+        except Exception as e:
+            _log("rule %s error: %s" % (rule.get("id"), e))
             continue  # a bad rule never blocks the user
         if violation:
+            _log("BLOCKED by %s" % rule.get("id"))
             return {"block": True, "block_reason": violation}
-    return {}
+    _log("allowed")
+    return {"clearable_note": "Governance hook ran (DEBUG): prompt allowed."} if DEBUG else {}
 
 
 try:
     print(json.dumps(main()))
-except Exception:
+except Exception as e:
+    _log("ERROR: %r" % (e,))
     print("{}")

@@ -19,7 +19,7 @@
       "name": "seans-governance-hook",
       "source": "./plugins/system/governance-hook",
       "description": "PreTurn hook that blocks turns that violate governance rules defined in the hook script",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": { "name": "sgubler" }
     },
     {

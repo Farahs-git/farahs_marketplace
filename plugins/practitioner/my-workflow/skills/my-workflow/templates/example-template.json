@@ -1,0 +1,14 @@
+{
+  "_comment": "Template for creating a new domain object. Replace placeholder values with actual data.",
+  "name": "{{object_name}}",
+  "type": "widget",
+  "status": "draft",
+  "config": {
+    "description": "{{description}}",
+    "tags": ["{{tag1}}", "{{tag2}}"],
+    "settings": {
+      "enabled": true,
+      "priority": "normal"
+    }
+  }
+}

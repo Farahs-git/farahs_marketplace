@@ -1,0 +1,27 @@
+{
+  "skill_name": "my-data-service",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "What endpoints are available in the example API?",
+      "expected_output": "The skill reads the service overview document and presents the available endpoints in a table with methods, paths, and descriptions.",
+      "files": [],
+      "expectations": [
+        "The skill reads references/example-api/_service.md",
+        "The skill presents endpoints in a formatted table",
+        "The skill does not attempt to call any API without being asked"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "List all active items",
+      "expected_output": "The skill reads the list-items endpoint documentation, then calls the API with a status filter for active items and presents the results.",
+      "files": [],
+      "expectations": [
+        "The skill reads references/example-api/list-items.md for the endpoint details",
+        "The skill calls api_request with service='my-product', path containing status=active, method='GET'",
+        "The skill presents the results in a readable format"
+      ]
+    }
+  ]
+}

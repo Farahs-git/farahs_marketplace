@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[codz]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.env
+.envrc.local
+.venv
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.cursor/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/

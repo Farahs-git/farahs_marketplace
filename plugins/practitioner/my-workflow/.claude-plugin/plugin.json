@@ -1,0 +1,8 @@
+{
+  "name": "my-workflow",
+  "description": "End-to-end workflow for creating and managing domain objects in My Product",
+  "version": "0.1.0",
+  "dependencies": {
+    "system": ["my-data-service"]
+  }
+}

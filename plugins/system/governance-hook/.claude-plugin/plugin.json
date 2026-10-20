@@ -1,0 +1,5 @@
+{
+  "name": "governance-hook",
+  "description": "PreTurn hook that blocks turns that violate governance rules defined in the hook script",
+  "version": "0.1.0"
+}

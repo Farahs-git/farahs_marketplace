@@ -1,0 +1,41 @@
+{
+  "skill_name": "my-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new widget called holiday-promo with high priority",
+      "expected_output": "The skill classifies the intent as create/widget, loads the domain guide and template, customizes the template with the provided name and priority, previews the configuration, and creates the object via the API.",
+      "files": [],
+      "expectations": [
+        "The skill reads references/domain-guide.md to understand constraints",
+        "The skill reads prompts/1-intent-classification.txt to classify user intent",
+        "The skill reads templates/example-template.json for the object template",
+        "The skill presents the customized configuration for user review before creating",
+        "The skill calls api_request to create the object only after user confirmation"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Find all active widgets related to campaigns",
+      "expected_output": "The skill runs the search script to discover matching objects and presents the results in a formatted table.",
+      "files": [],
+      "expectations": [
+        "The skill runs scripts/example_query.py with --action search and a relevant --query",
+        "The skill presents results in a readable table format",
+        "The skill does not attempt to create or modify any objects"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What types of objects can I create?",
+      "expected_output": "The skill reads the domain guide and explains the available object types, their required fields, and constraints.",
+      "files": [],
+      "expectations": [
+        "The skill reads references/domain-guide.md",
+        "The skill explains widget and widget-group object types",
+        "The skill mentions required fields and constraints",
+        "The skill does not call any APIs or scripts"
+      ]
+    }
+  ]
+}

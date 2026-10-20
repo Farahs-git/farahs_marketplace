@@ -1,0 +1,16 @@
+{
+  "PreTurn": [
+    {
+      "matcher": "",
+      "on_failure": "warn",
+      "hooks": [
+        {
+          "name": "governance",
+          "type": "command",
+          "command": "python3 ${AGENT_PLUGIN_ROOT}/hooks/check_governance.py",
+          "timeout": 10
+        }
+      ]
+    }
+  ]
+}

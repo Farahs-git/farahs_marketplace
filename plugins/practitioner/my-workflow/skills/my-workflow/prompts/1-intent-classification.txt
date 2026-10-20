@@ -1,0 +1,20 @@
+You are classifying a user's intent for the my-workflow skill.
+
+Given the user's message, determine:
+1. **Action**: create, update, search, analyze, or delete
+2. **Object type**: widget or widget-group
+3. **Key parameters**: Extract any names, IDs, filters, or constraints mentioned
+
+Respond in this JSON format:
+{
+  "action": "create|update|search|analyze|delete",
+  "object_type": "widget|widget-group",
+  "parameters": {
+    "name": "extracted name or null",
+    "filters": {}
+  },
+  "confidence": "high|medium|low",
+  "reasoning": "Brief explanation of classification"
+}
+
+User message: {{user_message}}

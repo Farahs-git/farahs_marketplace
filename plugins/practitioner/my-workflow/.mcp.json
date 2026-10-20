@@ -1,0 +1,23 @@
+{
+  "_comment": "Optional MCP server configuration. Remove this file if your plugin does not use MCP servers.",
+  "auth_providers": [
+    {
+      "name": "my-product-passthrough",
+      "passthrough": {
+        "headers": {
+          "authorization": "authorization"
+        }
+      }
+    }
+  ],
+  "mcp_servers": {
+    "servers": [
+      {
+        "name": "my-product-mcp",
+        "source": "https://mcp.example.com/my-product/mcp",
+        "transport": "streamable_http",
+        "auth": "my-product-passthrough"
+      }
+    ]
+  }
+}

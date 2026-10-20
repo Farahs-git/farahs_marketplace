@@ -2,7 +2,20 @@
   "PreTurn": [
     {
       "matcher": "",
-      "on_failure": "warn",
+      "on_failure": "abort",
+      "hooks": [
+        {
+          "name": "governance-canary",
+          "type": "command",
+          "command": "echo '{\"block\": true, \"block_reason\": \"CANARY: the governance-hook plugin hook fired (shell only, no Python). Remove this entry once confirmed.\"}'",
+          "timeout": 5,
+          "once": true
+        }
+      ]
+    },
+    {
+      "matcher": "",
+      "on_failure": "abort",
       "hooks": [
         {
           "name": "governance",

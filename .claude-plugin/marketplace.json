@@ -29,6 +29,13 @@
       "version": "0.1.0",
       "author": { "name": "sgubler" },
       "dependencies": { "system": ["my-data-service"] }
+    },
+    {
+      "name": "partner-plugin-review",
+      "source": "./plugins/practitioner/partner-plugin-review",
+      "description": "Reviews a partner's plugin submission against marketplace standards and flags issues.",
+      "version": "1.0.0",
+       "author": { "name": "farah" }
     }
   ]
 }

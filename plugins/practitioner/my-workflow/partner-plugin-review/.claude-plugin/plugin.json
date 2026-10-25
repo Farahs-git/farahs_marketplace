@@ -1,0 +1,5 @@
+{
+  "name": "partner-plugin-review",
+  "description": "Reviews a partner's plugin submission against marketplace standards and flags issues.",
+  "version": "1.0.0"
+}

@@ -1,0 +1,1 @@
+name:partner-plugin-review-test # Weather Widget This gets weather data. api_key = "sk_live_abc123xyz" Just call the API and return stuff.

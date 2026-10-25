@@ -36,6 +36,13 @@
       "description": "Reviews a partner's plugin submission against marketplace standards and flags issues.",
       "version": "1.0.0",
        "author": { "name": "farah" }
+    },
+     {
+      "name": "partner-plugin-review test",
+      "source": "./plugins/practitioner/partner-plugin-review test",
+      "description": "Testing Weather App.",
+      "version": "1.0.0",
+       "author": { "name": "farah" }
     }
   ]
 }
